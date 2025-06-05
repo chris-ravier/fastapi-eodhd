@@ -2,6 +2,9 @@ from fastapi import FastAPI
 from app.routes import example
 
 app = FastAPI()
+from app.database.db import init_db
+
+init_db()
 
 app.include_router(example.router)
 from app.routes import stock
