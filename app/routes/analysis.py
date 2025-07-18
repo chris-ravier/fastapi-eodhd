@@ -1,53 +1,75 @@
-import httpx
-import pandas as pd
-import numpy as np
+import requests
 from fastapi import APIRouter
-import os
+import json
 
 router = APIRouter()
+EODHD_API_KEY = "6840394cca4e74.25724982"
 
-EODHD_API_KEY = os.getenv("EODHD_API_KEY")
-BASE_URL = "https://eodhd.com/api"
-
-def calculate_rsi(data, period: int = 14):
-    delta = data['close'].diff()
-    gain = delta.where(delta > 0, 0.0)
-    loss = -delta.where(delta < 0, 0.0)
-    avg_gain = gain.rolling(window=period).mean()
-    avg_loss = loss.rolling(window=period).mean()
-    rs = avg_gain / avg_loss
-    rsi = 100 - (100 / (1 + rs))
-    return rsi
+@router.get("/stock/{symbol}")
+def stock_data(symbol: str):
+    url = f"https://eodhd.com/api/real-time/{symbol}?api_token={EODHD_API_KEY}&fmt=json"
+    return requests.get(url).json()
 
 @router.get("/analyse/{symbol}")
-async def analyse_stock(symbol: str):
-    url = f"{BASE_URL}/eod/{symbol}.US?api_token={EODHD_API_KEY}&fmt=json&order=d"
-    async with httpx.AsyncClient() as client:
-        response = await client.get(url)
-        data = response.json()
+def analyse_rsi(symbol: str):
+    url = f"https://eodhd.com/api/technical/{symbol}?function=rsi&api_token={EODHD_API_KEY}&fmt=json"
+    return requests.get(url).json()
 
-    df = pd.DataFrame(data)
-    df['date'] = pd.to_datetime(df['date'])
-    df = df.sort_values(by='date', ascending=True).reset_index(drop=True)
+@router.get("/analyse/macd/{symbol}")
+def analyse_macd(symbol: str):
+    url = f"https://eodhd.com/api/technical/{symbol}?function=macd&api_token={EODHD_API_KEY}&fmt=json"
+    return requests.get(url).json()
 
-    df['close'] = df['close'].astype(float)
-    df['sma_7'] = df['close'].rolling(window=7).mean()
-    df['sma_30'] = df['close'].rolling(window=30).mean()
-    df['rsi'] = calculate_rsi(df)
+@router.get("/prix/{symbol}")
+def prix_actuel(symbol: str):
+    url = f"https://eodhd.com/api/real-time/{symbol}?api_token={EODHD_API_KEY}&fmt=json"
+    return requests.get(url).json()
 
-    variation = ((df['close'].iloc[-1] - df['close'].iloc[-30]) / df['close'].iloc[-30]) * 100
-    trend = "bullish" if df['sma_7'].iloc[-1] > df['sma_30'].iloc[-1] else "bearish"
-    score = round((variation / 10 + (50 - abs(df['rsi'].iloc[-1] - 50)) / 10), 2)
+@router.get("/plusvalue/{symbol}/{montant}")
+def plus_value(symbol: str, montant: float):
+    prix_url = f"https://eodhd.com/api/real-time/{symbol}?api_token={EODHD_API_KEY}&fmt=json"
+    r = requests.get(prix_url)
+    if r.status_code != 200:
+        return {"error": "Erreur API"}
+    data = r.json()
+    if "close" in data:
+        plusvalue = round(float(data["close"]) - float(montant), 2)
+        return {
+            "ticker": symbol,
+            "investi": montant,
+            "cours_actuel": data["close"],
+            "plusvalue": plusvalue
+        }
+    else:
+        return {"error": "Cours non dispo"}
 
-    conseil = "Renforcer" if score > 7 else "Conserver" if score > 5 else "Alléger"
+@router.get("/portefeuille")
+def portefeuille():
+    with open("portefeuille.json", encoding="utf-8") as f:
+        data = json.load(f)
+    return data
 
-    return {
-        "symbol": symbol.upper(),
-        "variation_30d": round(variation, 2),
-        "rsi": round(df['rsi'].iloc[-1], 2),
-        "sma_7": round(df['sma_7'].iloc[-1], 2),
-        "sma_30": round(df['sma_30'].iloc[-1], 2),
-        "trend": trend,
-        "score": score,
-        "conseil": conseil
-    }
+# ROUTE D'EXEMPLE /COMPARE
+@router.get("/compare")
+def compare(symbols: str):
+    # symbols = "MSFT.US,AAPL.US"
+    tickers = symbols.split(",")
+    resultats = []
+    for ticker in tickers:
+        url = f"https://eodhd.com/api/real-time/{ticker}?api_token={EODHD_API_KEY}&fmt=json"
+        r = requests.get(url)
+        if r.status_code == 200:
+            resultats.append(r.json())
+    return resultats
+
+# ROUTE D'EXEMPLE /REPARTITION
+@router.get("/repartition")
+def repartition(amount: float):
+    # Ex de répartition cible, adapte si tu veux (ici : 60/25/10/5)
+    parts = [0.6, 0.25, 0.1, 0.05]
+    categories = ["ETF Monde", "Actions Dividende", "ETF Thématique", "Opportunités"]
+    result = [
+        {"categorie": categories[i], "allocation_eur": round(amount * parts[i], 2)}
+        for i in range(len(parts))
+    ]
+    return result

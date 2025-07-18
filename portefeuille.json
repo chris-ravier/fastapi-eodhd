@@ -1,0 +1,88 @@
+{
+  "positions": [
+    {
+      "nom": "PEA S&P 500 EUR (Acc)",
+      "ticker": "C500.PA",
+      "montant_investi": 521.63,
+      "type": "ETF"
+    },
+    {
+      "nom": "MSCI World EUR (Acc)",
+      "ticker": "CW8.PA",
+      "montant_investi": 282.15,
+      "type": "ETF"
+    },
+    {
+      "nom": "New Energy EUR (Dist)",
+      "ticker": "NRJ.PA",
+      "montant_investi": 204.88,
+      "type": "ETF"
+    },
+    {
+      "nom": "TotalEnergies",
+      "ticker": "TTE.PA",
+      "montant_investi": 161.37,
+      "type": "Action"
+    },
+    {
+      "nom": "Sanofi",
+      "ticker": "SAN.PA",
+      "montant_investi": 75.17,
+      "type": "Action"
+    },
+    {
+      "nom": "Palantir Technologies",
+      "ticker": "PLTR",
+      "montant_investi": 69.40,
+      "type": "Action"
+    },
+    {
+      "nom": "MSCI Europe EUR (Dist)",
+      "ticker": "MEUD.PA",
+      "montant_investi": 58.95,
+      "type": "ETF"
+    },
+    {
+      "nom": "UiPath",
+      "ticker": "PATH",
+      "montant_investi": 57.22,
+      "type": "Action"
+    },
+    {
+      "nom": "Main Street Capital",
+      "ticker": "MAIN",
+      "montant_investi": 56.56,
+      "type": "Action"
+    },
+    {
+      "nom": "Artificial Intelligence USD (Acc)",
+      "ticker": "AIAI.MI",
+      "montant_investi": 49.51,
+      "type": "ETF"
+    },
+    {
+      "nom": "Alphabet (A)",
+      "ticker": "GOOGL",
+      "montant_investi": 31.59,
+      "type": "Action"
+    },
+    {
+      "nom": "Fortinet",
+      "ticker": "FTNT",
+      "montant_investi": 29.80,
+      "type": "Action"
+    },
+    {
+      "nom": "Altria Group",
+      "ticker": "MO",
+      "montant_investi": 28.84,
+      "type": "Action"
+    },
+    {
+      "nom": "ChargePoint Holdings",
+      "ticker": "CHPT",
+      "montant_investi": 45.22,
+      "type": "Action"
+    }
+  ]
+}
