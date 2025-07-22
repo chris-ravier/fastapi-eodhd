@@ -1,88 +1,116 @@
 {
   "positions": [
     {
-      "nom": "PEA S&P 500 EUR (Acc)",
-      "ticker": "C500.PA",
-      "montant_investi": 521.63,
-      "type": "ETF"
+      "nom": "TotalEnergies SE",
+      "type": "action",
+      "isin": "FR0000120271",
+      "quantite": 3.0,
+      "prix_achat": 51.10
     },
     {
-      "nom": "MSCI World EUR (Acc)",
-      "ticker": "CW8.PA",
-      "montant_investi": 282.15,
-      "type": "ETF"
+      "nom": "Sanofi S.A.",
+      "type": "action",
+      "isin": "FR0000120578",
+      "quantite": 0.9,
+      "prix_achat": 92.70
     },
     {
-      "nom": "New Energy EUR (Dist)",
-      "ticker": "NRJ.PA",
-      "montant_investi": 204.88,
-      "type": "ETF"
+      "nom": "MUF-Amundi MSCI New Ener.UCITS",
+      "type": "etf",
+      "isin": "FR0010524777",
+      "quantite": 11.176871,
+      "prix_achat": 24.02
     },
     {
-      "nom": "TotalEnergies",
-      "ticker": "TTE.PA",
-      "montant_investi": 161.37,
-      "type": "Action"
+      "nom": "AM. ETF PEA S&P 500 UCITS ETF",
+      "type": "etf",
+      "isin": "FR0013412285",
+      "quantite": 6.059446,
+      "prix_achat": 37.76
     },
     {
-      "nom": "Sanofi",
-      "ticker": "SAN.PA",
-      "montant_investi": 75.17,
-      "type": "Action"
+      "nom": "iShsII-Core MSCI Europe U.ETF",
+      "type": "etf",
+      "isin": "IE00B1YZSC51",
+      "quantite": 1.731351,
+      "prix_achat": 34.66
     },
     {
-      "nom": "Palantir Technologies",
-      "ticker": "PLTR",
-      "montant_investi": 69.40,
-      "type": "Action"
+      "nom": "L&G-L&G Art.Intell.UCITS ETF",
+      "type": "etf",
+      "isin": "IE00BK5BCD43",
+      "quantite": 2.413911,
+      "prix_achat": 20.30
     },
     {
-      "nom": "MSCI Europe EUR (Dist)",
-      "ticker": "MEUD.PA",
-      "montant_investi": 58.95,
-      "type": "ETF"
+      "nom": "WisdomTree Multi Ass.Iss.PLC Nasdaq100 long 3x",
+      "type": "etf",
+      "isin": "IE00BLRPRL42",
+      "quantite": 0.674824,
+      "prix_achat": 222.28
     },
     {
-      "nom": "UiPath",
-      "ticker": "PATH",
-      "montant_investi": 57.22,
-      "type": "Action"
+      "nom": "AIS-Amundi MSCI World",
+      "type": "etf",
+      "isin": "LU1681043599",
+      "quantite": 0.491257,
+      "prix_achat": 491.09
     },
     {
-      "nom": "Main Street Capital",
-      "ticker": "MAIN",
-      "montant_investi": 56.56,
-      "type": "Action"
+      "nom": "MUL-AM.MSCI Millenials U.ETF",
+      "type": "etf",
+      "isin": "LU2023678449",
+      "quantite": 10.102285,
+      "prix_achat": 15.84
     },
     {
-      "nom": "Artificial Intelligence USD (Acc)",
-      "ticker": "AIAI.MI",
-      "montant_investi": 49.51,
-      "type": "ETF"
+      "nom": "Alphabet Inc.",
+      "type": "action",
+      "isin": "US02079K3059",
+      "quantite": 0.201504,
+      "prix_achat": 148.88
     },
     {
-      "nom": "Alphabet (A)",
-      "ticker": "GOOGL",
-      "montant_investi": 31.59,
-      "type": "Action"
+      "nom": "Altria Group Inc.",
+      "type": "action",
+      "isin": "US02209S1033",
+      "quantite": 0.572847,
+      "prix_achat": 52.35
     },
     {
-      "nom": "Fortinet",
-      "ticker": "FTNT",
-      "montant_investi": 29.80,
-      "type": "Action"
+      "nom": "ChargePoint Holdings Inc.",
+      "type": "action",
+      "isin": "US15961R1059",
+      "quantite": 85.0,
+      "prix_achat": 0.579
     },
     {
-      "nom": "Altria Group",
-      "ticker": "MO",
-      "montant_investi": 28.84,
-      "type": "Action"
+      "nom": "Fortinet Inc.",
+      "type": "action",
+      "isin": "US34959E1091",
+      "quantite": 0.331338,
+      "prix_achat": 93.56
     },
     {
-      "nom": "ChargePoint Holdings",
-      "ticker": "CHPT",
-      "montant_investi": 45.22,
-      "type": "Action"
+      "nom": "Main Street Capital Corp.",
+      "type": "action",
+      "isin": "US56035L1044",
+      "quantite": 1.038704,
+      "prix_achat": 48.40
+    },
+    {
+      "nom": "Palantir Technologies Inc.",
+      "type": "action",
+      "isin": "US69608A1088",
+      "quantite": 0.544715,
+      "prix_achat": 110.11
+    },
+    {
+      "nom": "UIPATH INC. A",
+      "type": "action",
+      "isin": "US90364P1057",
+      "quantite": 5.41586,
+      "prix_achat": 11.08
     }
   ]
 }
